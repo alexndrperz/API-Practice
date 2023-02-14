@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "jixcSpnpjF6A60XSy+S+FldmG21GaefZT5vQVkE7aOU=",
+  "Source": "JsonCSV.Api",
+  "BasePath": "_content/JsonCSV.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
