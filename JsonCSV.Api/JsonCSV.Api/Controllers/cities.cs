@@ -1,28 +1,30 @@
 ﻿using JsonCSV.Api.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JsonCSV.Api.Controllers
 {
-	[ApiController] // Speed up the debugging process
+    [ApiController] // Speed up the debugging process
 	[Route("api/cities")] // Use of Route
 	public class ContExample : ControllerBase // Just the Controller class has a lot of innecesary methods for views
 	{
-		[HttpGet/*("table")*/] // Example of get method (the comments are just a form to route the api)
-		public JsonResult getValues()
+		[HttpGet/*("table")*/] // Example of get method (the comment is just a form to route the api)
+		public ActionResult<IEnumerable<FileStored>> getValues()
 		{
-			var stat = new JsonResult(SecondModel.Current.Cities);
-			stat.StatusCode= 200;	
-
-
-			return new JsonResult(SecondModel.Current.Cities);
+			return Ok(FileStored.Current.Cities);
 		}
 
-		[HttpGet("{id}")] // Get just a element based in the id
-		public ActionResult<JSONModel> getValue(int id) 
-		{ 
-			var cityReturned = new JsonResult(SecondModel.Current.Cities.FirstOrDefault(c=> c.id == id)); // The method  iterates the seconModel and returns the id that is equal, or one is are two equals ids
-			return Ok(cityReturned);
 
+
+		[HttpGet("{id}")] // Get just a element based in the id
+		public ActionResult<FileDto> getValue(int id)
+		{ 
+			var returnValue = new JsonResult(FileStored.Current.Cities.FirstOrDefault(c => c.id == id));
+			if (returnValue.Value == null) { 
+				return NotFound(); // Condition in case that the value isn`t found
+			}
+			
+			return Ok(returnValue.Value);
 		}
 	}
 }
