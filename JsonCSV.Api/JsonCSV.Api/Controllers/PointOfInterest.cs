@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JsonCSV.Api.Controllers
 {
-	[Route("api/cities/{cityid}/interestpoints")]
+	[Route("api/cities/{cityid}/pointsofinterest")]
 	[ApiController]
 	public class PointOfInterest : ControllerBase
 	{
@@ -16,6 +16,12 @@ namespace JsonCSV.Api.Controllers
 			if (file  == null) { 
 				return NotFound();
 			}
+			if (file.InterestPoints.Count == 0)
+			{
+				return NotFound();
+			}
+
+
 			return Ok(file.InterestPoints);
 		}
 
