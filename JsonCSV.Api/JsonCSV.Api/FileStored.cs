@@ -14,7 +14,21 @@
 				{
 					id = 1,
 					name= "Test1",
-					description= "Test1"
+					description= "Test1",
+					InterestPoints = new List<DateDto>()
+					{
+						new DateDto()
+						{
+							id = 1,
+							description = "asdaal",
+							name = "Great Cathedral"
+						},
+						new DateDto()
+						{
+							id= 2,
+							name = "Live e toi"
+						}
+					}
 				},
 				new FileDto()
 				{
@@ -25,7 +39,21 @@
 				new FileDto() {
 					id = 3,
 					name = "Hes",
-					description = "asdasd"
+					description = "asdasd",
+					InterestPoints = new List<DateDto>()
+					{
+						new DateDto()
+						{
+							id = 1,
+							description = "asdaal",
+							name = "Great Cathedral"
+						},
+						new DateDto() 
+						{
+							id= 2,	
+							name = "Live e toi"
+						}
+					}
 				}
 			};
 		}
