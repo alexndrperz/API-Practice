@@ -1,0 +1,2 @@
+2023-03-11 08:49:22.640 -04:00 [FTL] Sucedio una excepcion en el sistema: System.Exception: Test
+   at JsonCSV.Api.Controllers.PointOfInterestController.GetInterestPoints(Int32 cityid) in C:\Users\TI\Documents\C#\First_API\JsonCSV.Api\JsonCSV.Api\Controllers\PointOfInterestController.cs:line 27
