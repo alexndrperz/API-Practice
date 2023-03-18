@@ -1,5 +1,6 @@
 ﻿using JsonCSV.Api.DbContexts;
 using JsonCSV.Api.Entities;
+using JsonCSV.Api.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata.Ecma335;
 
@@ -41,5 +42,17 @@ namespace JsonCSV.Api.Services
 			return await _context.pointOfInterests.Where(p => p.CityId == cityId && p.Id == pointOfInterestId).FirstOrDefaultAsync();
 		}
 
+		public async Task AddInterestPoints(int cityid, PointOfInterest pointOfInterest)
+		{
+			var city = await GetCity(cityid, false);
+			if (city != null) {
+				city.InterestPoints.Add(pointOfInterest);
+			}
+		}
+
+		public async Task<bool> SaveData()
+		{
+			return (await _context.SaveChangesAsync() >= 0);
+		}
 	}
 }

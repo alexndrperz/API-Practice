@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using JsonCSV.Api.Entities;
 using JsonCSV.Api.Models;
 using JsonCSV.Api.Services;
 using Microsoft.AspNetCore.Http;
@@ -55,53 +56,22 @@ namespace JsonCSV.Api.Controllers
 			if (pointOfInterest == null) { 
 				return NotFound();
 			}
-			return Ok(_mapper.Map<CitiesController>(pointOfInterest));	
-			
-			//var file = _citiesData.Cities.FirstOrDefault(c => c.id == cityid);
-			//if (file == null) {
-			//	_logger.LogCritical($"La ciudad #{cityid} no se encuentra en nuestra base de datos");
-			//	return NotFound();
-			//}
-
-			//var InterestPoints = file.InterestPoints.FirstOrDefault(c => c.id == interestpointsID);
-			//if (InterestPoints == null)
-			//{
-			//	return NotFound();
-			//}
-			//return Ok(InterestPoints);
+			var vsf = _mapper.Map<PointOfInterestDTO>(pointOfInterest);
+			return Ok(vsf);	
 		}
 		[HttpPost]
-		public ActionResult<PointOfInterestController> CreateInterestPoint(int cityid, PointOfInterestCreatorDTO pointOfInterest)
+		public async Task<ActionResult<PointOfInterestDTO>> CreateInterestPoint(int cityid, PointOfInterestCreatorDTO pointOfInterest)
 		{
-			var citiesDataStore = _citiesData.Cities.FirstOrDefault(c => c.id == cityid);
-			if (citiesDataStore == null) {
-				_logger.LogCritical($"La ciudad #{cityid} no se encuentra en nuestra base de datos");
-				return NotFound();
-			}
-			
+            if (!await _cityRepository.CityExistsVerification(cityid)) 
+            {
+                return NotFound();	
+            }
 
-			var mx_interestPoint = _citiesData.Cities.SelectMany(c => c.InterestPoints).Max(p => p.id);
-			var finalInterestPoint = new PointOfInterestDTO()
-			{
-				id = ++mx_interestPoint,
-				name = pointOfInterest.name,
-				description = pointOfInterest.description
-			};
-
-			citiesDataStore.InterestPoints.Add(finalInterestPoint);
-
-			var uriBuilder = new UriBuilder(Request.Scheme, Request.Host.Host, Request.Host.Port ?? -1);
-			if (uriBuilder.Uri.IsDefaultPort)
-			{
-				uriBuilder.Port = -1;
-			}
-
-			var baseUri = uriBuilder.Uri.AbsoluteUri;
-
-			var val = $"{baseUri}api/cities/{cityid}/pointsofinterest";
-
-			return Created(val, finalInterestPoint);
-
+			var finalPoint = _mapper.Map<PointOfInterest>(pointOfInterest);
+			await _cityRepository.AddInterestPoints(cityid, pointOfInterest);
+			await _cityRepository.SaveData();
+			var pointCreated = _mapper.Map<PointOfInterestDTO>(finalPoint);
+			return CreatedAtRoute();
 		}
 
 		[HttpPut("{pointOfInterestID}")]
