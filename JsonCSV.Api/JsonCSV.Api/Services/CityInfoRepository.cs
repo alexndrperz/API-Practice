@@ -13,9 +13,13 @@ namespace JsonCSV.Api.Services
         {
 			_context = cityInfoContext;
         }
-        public async Task<IEnumerable<City>> GetCities()
+        public async Task<IEnumerable<City>> GetCities(bool includePD)
 		{
-			return await _context.Cities.OrderBy(c => c.Name).ToListAsync();	
+            if (includePD)
+            {
+			 return await _context.Cities.Include(c => c.InterestPoints).ToListAsync();
+            }
+            return await _context.Cities.OrderBy(c => c.Name).ToListAsync();	
 		}
 
 		public async Task<City?> GetCity(int cityId, bool includePointsInt)
@@ -53,6 +57,18 @@ namespace JsonCSV.Api.Services
 		public async Task<bool> SaveData()
 		{
 			return (await _context.SaveChangesAsync() >= 0);
+		}
+
+		public async Task<string> BaseURI(UriBuilder uriBuilder)
+		{
+
+			if (uriBuilder.Uri.IsDefaultPort)
+			{
+				uriBuilder.Port = -1;
+			}
+
+			var baseUri =  uriBuilder.Uri.AbsoluteUri;
+			return baseUri;
 		}
 	}
 }

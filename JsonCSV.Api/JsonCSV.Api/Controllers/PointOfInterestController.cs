@@ -5,6 +5,7 @@ using JsonCSV.Api.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Web;
 
 namespace JsonCSV.Api.Controllers
@@ -60,7 +61,7 @@ namespace JsonCSV.Api.Controllers
 			return Ok(vsf);	
 		}
 		[HttpPost]
-		public async Task<ActionResult<PointOfInterestDTO>> CreateInterestPoint(int cityid, PointOfInterestCreatorDTO pointOfInterest)
+		public async Task<ActionResult<PointOfInterestDTO>> CreateInterestPoint(int cityid, PointOfInterest pointOfInterest)
 		{
             if (!await _cityRepository.CityExistsVerification(cityid)) 
             {
@@ -71,7 +72,12 @@ namespace JsonCSV.Api.Controllers
 			await _cityRepository.AddInterestPoints(cityid, pointOfInterest);
 			await _cityRepository.SaveData();
 			var pointCreated = _mapper.Map<PointOfInterestDTO>(finalPoint);
-			return CreatedAtRoute();
+			var uriBuilder = new UriBuilder(Request.Scheme, Request.Host.Host, Request.Host.Port ?? -1);
+			var baseUri = await  _cityRepository.BaseURI(uriBuilder);
+
+			var Uri = $"{baseUri}api/cities/{cityid}/pointsofinterest";
+
+			return Created(Uri, pointCreated);
 		}
 
 		[HttpPut("{pointOfInterestID}")]

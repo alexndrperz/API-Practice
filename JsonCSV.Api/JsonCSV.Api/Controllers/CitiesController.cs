@@ -18,13 +18,18 @@ namespace JsonCSV.Api.Controllers
 
 			_cityEntities = cityRepository ?? throw new ArgumentException(nameof(cityRepository));
 			_mapper = mapper ?? throw new ArgumentException(nameof(mapper));
-		}
+		}	
 
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<CityWithoutPointOfInterestDTO>>> getValues()
+		public async Task<IActionResult> getValues(bool includePD)
 		{
-			var cityEntities = await _cityEntities.GetCities();
+			var cityEntities = await _cityEntities.GetCities(includePD);
+			if (includePD)
+			{
+				return Ok(_mapper.Map<IEnumerable<CitiesDTO>>(cityEntities));
+			}
 			return Ok(_mapper.Map<IEnumerable<CityWithoutPointOfInterestDTO>>(cityEntities));
+			
         }
 
 
