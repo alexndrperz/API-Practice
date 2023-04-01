@@ -2,6 +2,7 @@
 using JsonCSV.Api.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JsonCSV.Api.Migrations
 {
     [DbContext(typeof(CityInfoContext))]
-    partial class CityInfoContextModelSnapshot : ModelSnapshot
+    [Migration("20230401154211_NewUsersTable")]
+    partial class NewUsersTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.0");
@@ -83,10 +85,6 @@ namespace JsonCSV.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -108,7 +106,6 @@ namespace JsonCSV.Api.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "asddd",
                             PasswordHash = "WZRHGrsBESr8wYFZ9sx0tPURuZgG2lmzyvWpwXPKz8U=",
                             Role = "Admin",
                             UserName = "Name"
@@ -116,7 +113,6 @@ namespace JsonCSV.Api.Migrations
                         new
                         {
                             Id = 2,
-                            Name = "asddd",
                             PasswordHash = "uGwaNkDuybwje2YFH52Iug8hzhdsw14OqkLN0HLjgxY=",
                             Role = "Admin",
                             UserName = "ww"
@@ -124,7 +120,6 @@ namespace JsonCSV.Api.Migrations
                         new
                         {
                             Id = 3,
-                            Name = "asddd",
                             PasswordHash = "iycDVeU89JiQiiTck7PC9Wx2W18ocSwK2GxPPkuCSsU=",
                             Role = "Admin",
                             UserName = "wwww"

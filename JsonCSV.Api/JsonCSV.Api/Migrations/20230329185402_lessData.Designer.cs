@@ -2,6 +2,7 @@
 using JsonCSV.Api.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JsonCSV.Api.Migrations
 {
     [DbContext(typeof(CityInfoContext))]
-    partial class CityInfoContextModelSnapshot : ModelSnapshot
+    [Migration("20230329185402_lessData")]
+    partial class lessData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.0");
@@ -75,60 +77,6 @@ namespace JsonCSV.Api.Migrations
                     b.HasIndex("CityId");
 
                     b.ToTable("pointOfInterests");
-                });
-
-            modelBuilder.Entity("JsonCSV.Api.Entities.UsersIdentification", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("usersIdentification");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "asddd",
-                            PasswordHash = "WZRHGrsBESr8wYFZ9sx0tPURuZgG2lmzyvWpwXPKz8U=",
-                            Role = "Admin",
-                            UserName = "Name"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "asddd",
-                            PasswordHash = "uGwaNkDuybwje2YFH52Iug8hzhdsw14OqkLN0HLjgxY=",
-                            Role = "Admin",
-                            UserName = "ww"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "asddd",
-                            PasswordHash = "iycDVeU89JiQiiTck7PC9Wx2W18ocSwK2GxPPkuCSsU=",
-                            Role = "Admin",
-                            UserName = "wwww"
-                        });
                 });
 
             modelBuilder.Entity("JsonCSV.Api.Entities.PointOfInterest", b =>

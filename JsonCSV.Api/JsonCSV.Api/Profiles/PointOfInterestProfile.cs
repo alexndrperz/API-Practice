@@ -9,6 +9,7 @@ namespace JsonCSV.Api.Profiles
 		public PointOfInterestProfile() {
 			CreateMap<PointOfInterest, PointOfInterestDTO>();
 			CreateMap<PointOfInterestCreatorDTO, PointOfInterest>();
+			CreateMap<PointOfInterestUpdaterDTO , PointOfInterest>();
 		}	
 	}
 }

@@ -7,7 +7,8 @@ namespace JsonCSV.Api.Profiles
         public CityProfile()
         {
             CreateMap<Entities.City, Models.CityWithoutPointOfInterestDTO>();
-            CreateMap<Entities.City, Models.CitiesDTO>();
+			CreateMap<Models.CityWithoutPointOfInterestDTO, Entities.City>();
+			CreateMap<Entities.City, Models.CitiesDTO>();
             CreateMap<Entities.City, Models.PointOfInterestCreatorDTO>();   
         }
     }

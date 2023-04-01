@@ -7,20 +7,46 @@ namespace JsonCSV.Api.DbContexts
 	{
 		public DbSet<City> Cities { get; set; } = null!;
 		public DbSet<PointOfInterest> pointOfInterests { get; set; } = null!;
+		public DbSet<UsersIdentification> usersIdentification { get; set; }	
 
 		public CityInfoContext(DbContextOptions<CityInfoContext> options) : base(options) { 
-		
+			
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
+			UsersIdentification yy = new UsersIdentification();	
+			modelBuilder.Entity<UsersIdentification>()
+				.HasData(
+				new UsersIdentification
+				{
+					Id = 1,	
+					UserName = "Name",
+					Name = "asddd",
+					PasswordHash = yy.SetPassword("12345"),
+					Role = "Admin"
+				},
+				new UsersIdentification
+				{
+					Id = 2,
+					Name = "asddd",
+					UserName = "ww",
+					PasswordHash = yy.SetPassword("12745"),
+					Role = "Admin"
+				},
+				new UsersIdentification
+				{
+					Id=3,	
+					UserName = "wwww",
+					Name = "asddd",
+					PasswordHash = yy.SetPassword("123w45"),
+					Role = "Admin"
+				}
+			);
+
 			modelBuilder.Entity<City>()
 			   .HasData(
-			  new City("New York City")
-			  {
-				  Id = 1,
-				  Description = "The one with that big park."
-			  },
+
 			  new City("Antwerp")
 			  {
 				  Id = 2,
@@ -31,46 +57,6 @@ namespace JsonCSV.Api.DbContexts
 				  Id = 3,
 				  Description = "The one with that big tower."
 			  });
-
-			modelBuilder.Entity<PointOfInterest>()
-			 .HasData(
-			   new PointOfInterest("Central Park")
-			   {
-				   Id = 1,
-				   CityId = 1,
-				   Description = "The most visited urban park in the United States."
-			   },
-			   new PointOfInterest("Empire State Building")
-			   {
-				   Id = 2,
-				   CityId = 1,
-				   Description = "A 102-story skyscraper located in Midtown Manhattan."
-			   },
-				 new PointOfInterest("Cathedral")
-				 {
-					 Id = 3,
-					 CityId = 2,
-					 Description = "A Gothic style cathedral, conceived by architects Jan and Pieter Appelmans."
-				 },
-			   new PointOfInterest("Antwerp Central Station")
-			   {
-				   Id = 4,
-				   CityId = 2,
-				   Description = "The the finest example of railway architecture in Belgium."
-			   },
-			   new PointOfInterest("Eiffel Tower")
-			   {
-				   Id = 5,
-				   CityId = 3,
-				   Description = "A wrought iron lattice tower on the Champ de Mars, named after engineer Gustave Eiffel."
-			   },
-			   new PointOfInterest("The Louvre")
-			   {
-				   Id = 6,
-				   CityId = 3,
-				   Description = "The world's largest museum."
-			   }
-			   );
 		}
 	}
 }
