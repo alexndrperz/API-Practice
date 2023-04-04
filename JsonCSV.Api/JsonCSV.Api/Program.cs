@@ -3,7 +3,9 @@ using JsonCSV.Api.Models;
 using JsonCSV.Api.Services;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using System.Text;
 
 Log.Logger = new LoggerConfiguration().MinimumLevel.Fatal().WriteTo.Console()
 	.WriteTo.File("logs/cityError.txt", rollingInterval: RollingInterval.Day).
@@ -38,7 +40,33 @@ builder.Services.AddDbContext<CityInfoContext>(dbContextOptions => dbContextOpti
 builder.Services.AddScoped<ICityRepository, CityInfoRepository>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+builder.Services.AddAuthentication("Bearer")
+	.AddJwtBearer(options =>
+	{
+		options.TokenValidationParameters = new()
+		{
+			ValidateIssuer = true,
+			ValidateAudience = true,
+			ValidateIssuerSigningKey = true,
+			ValidIssuer = builder.Configuration["AutenticationSecret:Issuer"],
+			ValidAudience = builder.Configuration["AutenticationSecret:Audiencie"],
+			IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["AutenticationSecret:Secret"]))
+		};
+	}
+);
+
+builder.Services.AddAuthorization(options =>
+{
+	options.AddPolicy("MustBeAdmin", policy =>
+	{
+		policy.RequireAuthenticatedUser();
+		policy.RequireClaim("Role", "Admin");
+	});
+});
+
 var app = builder.Build();
+
+
 
 //// Configure the HTTP request pipeline.
 /// App Enviroment verify if the app is executing with the idle for use the swagger
@@ -51,8 +79,9 @@ if (app.Environment.IsDevelopment()) // This will not function if the enviroment
 // Methods for make routing
 app.UseHttpsRedirection();
 
-app.UseRouting();	//change
+app.UseRouting();   //change
 
+app.UseAuthentication();
 
 app.UseAuthorization();
 

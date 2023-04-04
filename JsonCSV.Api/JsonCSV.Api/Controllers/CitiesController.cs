@@ -3,6 +3,7 @@ using JsonCSV.Api.DbContexts;
 using JsonCSV.Api.Entities;
 using JsonCSV.Api.Models;
 using JsonCSV.Api.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
@@ -12,6 +13,7 @@ namespace JsonCSV.Api.Controllers
 {
 	
 	[ApiController]
+	[Authorize(Policy ="MustBeAdmin")]
 	[Route("api/cities")]
 	public class CitiesController : ControllerBase
 	{

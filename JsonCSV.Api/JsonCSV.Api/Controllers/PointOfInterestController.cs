@@ -2,6 +2,7 @@
 using JsonCSV.Api.Entities;
 using JsonCSV.Api.Models;
 using JsonCSV.Api.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,7 @@ namespace JsonCSV.Api.Controllers
 
 
 	[Route("api/cities/{cityid}/pointsofinterest")]
+	[Authorize]
 	[ApiController]
 	public class PointOfInterestController : ControllerBase
 	{

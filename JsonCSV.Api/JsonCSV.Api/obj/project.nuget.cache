@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "xolfe4Np2b7cc7F/foLTpb/I4YY/UX+vaAOeTTdmEkJHpflxsZB5QBr/bAgPzPNBxc1zreG4KgxB0B2uQ2Tobw==",
+  "dgSpecHash": "tUeHt1ze/bIxRhm2VEwmg40/t6pgt1IageXi+6hOQi9MqfrsbgzDSzfZvM4UbZInqv3dYmZLEKgqah2R8Wer5A==",
   "success": true,
   "projectFilePath": "C:\\Users\\TI\\Documents\\C#\\First_API\\JsonCSV.Api\\JsonCSV.Api\\JsonCSV.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\TI\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\TI\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.0\\microsoft.aspnetcore.authentication.jwtbearer.6.0.0.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\7.0.3\\microsoft.aspnetcore.jsonpatch.7.0.3.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\7.0.3\\microsoft.aspnetcore.mvc.newtonsoftjson.7.0.3.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.2\\microsoft.aspnetcore.openapi.7.0.2.nupkg.sha512",
@@ -39,6 +40,8 @@
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.identitymodel.abstractions\\6.28.0\\microsoft.identitymodel.abstractions.6.28.0.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.28.0\\microsoft.identitymodel.jsonwebtokens.6.28.0.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.identitymodel.logging\\6.28.0\\microsoft.identitymodel.logging.6.28.0.nupkg.sha512",
+    "C:\\Users\\TI\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.10.0\\microsoft.identitymodel.protocols.6.10.0.nupkg.sha512",
+    "C:\\Users\\TI\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.10.0\\microsoft.identitymodel.protocols.openidconnect.6.10.0.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.28.0\\microsoft.identitymodel.tokens.6.28.0.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

@@ -21,7 +21,7 @@ namespace JsonCSV.Api.DbContexts
 				new UsersIdentification
 				{
 					Id = 1,	
-					UserName = "Name",
+					UserName = "Alan",
 					Name = "asddd",
 					PasswordHash = yy.SetPassword("12345"),
 					Role = "Admin"
@@ -30,9 +30,9 @@ namespace JsonCSV.Api.DbContexts
 				{
 					Id = 2,
 					Name = "asddd",
-					UserName = "ww",
+					UserName = "Raul",
 					PasswordHash = yy.SetPassword("12745"),
-					Role = "Admin"
+					Role = "Reader"
 				},
 				new UsersIdentification
 				{

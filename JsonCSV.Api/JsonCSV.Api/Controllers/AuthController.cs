@@ -42,14 +42,14 @@ namespace JsonCSV.Api.Controllers
 			{
 				new Claim("sub", user.GetType().GetProperty("userId").GetValue(user).ToString()),
 				new Claim("name",user.GetType().GetProperty("username").GetValue(user).ToString()),
-				new Claim("role",user.GetType().GetProperty("role").GetValue(user).ToString())
+				new Claim("Role",user.GetType().GetProperty("role").GetValue(user).ToString())
 			};
 
 			var jwtSecurityToken = new JwtSecurityToken(_configuration["AutenticationSecret:Issuer"],
-														_configuration["AutenticationSecret:Audience"],
+														_configuration["AutenticationSecret:Audiencie"],
 														claimsToken,
 														DateTime.UtcNow,
-														DateTime.UtcNow.AddHours(1),
+														DateTime.UtcNow.AddHours(3000),
 														signingCredentials);
 
 			var tokenToReturn = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
