@@ -81,3 +81,5 @@ C:\Users\TI\Documents\C#\First_API\JsonCSV.Api\JsonCSV.Api\bin\Debug\net7.0\Syst
 C:\Users\TI\Documents\C#\First_API\JsonCSV.Api\JsonCSV.Api\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\TI\Documents\C#\First_API\JsonCSV.Api\JsonCSV.Api\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
 C:\Users\TI\Documents\C#\First_API\JsonCSV.Api\JsonCSV.Api\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\TI\Documents\C#\First_API\JsonCSV.Api\JsonCSV.Api\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Versioning.dll
+C:\Users\TI\Documents\C#\First_API\JsonCSV.Api\JsonCSV.Api\bin\Debug\net7.0\JsonCSV.Api.xml

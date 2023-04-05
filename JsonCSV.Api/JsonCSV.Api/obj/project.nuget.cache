@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "tUeHt1ze/bIxRhm2VEwmg40/t6pgt1IageXi+6hOQi9MqfrsbgzDSzfZvM4UbZInqv3dYmZLEKgqah2R8Wer5A==",
+  "dgSpecHash": "8F6CARH9ILA7c29s82DeZRJkRrwfDusNq7WT4ez0Y2Ux08zHdpferODN7zy8E1o4pnve9dApVpI5yDxcBQ818g==",
   "success": true,
   "projectFilePath": "C:\\Users\\TI\\Documents\\C#\\First_API\\JsonCSV.Api\\JsonCSV.Api\\JsonCSV.Api.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.0\\microsoft.aspnetcore.authentication.jwtbearer.6.0.0.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\7.0.3\\microsoft.aspnetcore.jsonpatch.7.0.3.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\7.0.3\\microsoft.aspnetcore.mvc.newtonsoftjson.7.0.3.nupkg.sha512",
+    "C:\\Users\\TI\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\5.0.0\\microsoft.aspnetcore.mvc.versioning.5.0.0.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.2\\microsoft.aspnetcore.openapi.7.0.2.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.0\\microsoft.data.sqlite.core.6.0.0.nupkg.sha512",

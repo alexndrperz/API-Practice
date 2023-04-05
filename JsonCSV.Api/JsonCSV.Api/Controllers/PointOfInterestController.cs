@@ -11,11 +11,10 @@ using System.Web;
 
 namespace JsonCSV.Api.Controllers
 {
-
-
-
-	[Route("api/cities/{cityid}/pointsofinterest")]
-	[Authorize]
+	[ApiVersion("1.0")]
+	[ApiVersion("2.0")]	
+	[Route("api/cities/{cityid}/pointsofinterest/v{version:apiVersion}")]
+	//[Authorize]
 	[ApiController]
 	public class PointOfInterestController : ControllerBase
 	{

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using System.Reflection;
 using System.Text;
 
 Log.Logger = new LoggerConfiguration().MinimumLevel.Fatal().WriteTo.Console()
@@ -26,7 +27,13 @@ builder.Services.AddControllers(options =>
 }).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters(); // Making th return format of xml
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(setupAction =>
+{
+	var xmlName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+	var xmlRoute = Path.Combine(AppContext.BaseDirectory, xmlName);
+
+	setupAction.IncludeXmlComments(xmlRoute);
+});
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 #if DEBUG
 builder.Services.AddTransient<IMailService, EmailService>();
@@ -54,6 +61,15 @@ builder.Services.AddAuthentication("Bearer")
 		};
 	}
 );
+
+builder.Services.AddApiVersioning(action =>
+{
+	action.AssumeDefaultVersionWhenUnspecified = true;
+	action.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+	action.ReportApiVersions = true;
+});
+
+
 
 builder.Services.AddAuthorization(options =>
 {

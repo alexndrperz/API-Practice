@@ -13,8 +13,9 @@ namespace JsonCSV.Api.Controllers
 {
 	
 	[ApiController]
-	[Authorize(Policy ="MustBeAdmin")]
-	[Route("api/cities")]
+	[ApiVersion("1.0")]
+	//[Authorize(Policy ="MustBeAdmin")]
+	[Route("api/cities/v{version:apiVersion}")]
 	public class CitiesController : ControllerBase
 	{
 		private const int maxSize = 10;
@@ -28,6 +29,7 @@ namespace JsonCSV.Api.Controllers
 
 		}
 
+		///
 		[HttpGet]
 		public async Task<IActionResult> getValues(bool includePD, [FromQuery] string? name, string? search, int pageNumber=1, int pageSize = 10)
 		{
@@ -52,8 +54,16 @@ namespace JsonCSV.Api.Controllers
 		}
 
 
-
-		[HttpGet("{id}")] // Get just a element based in the id
+		/// <summary>
+		/// Obtener una ciudad basada en el id
+		/// </summary>
+		/// <param name="id">ID de la ciudad</param>
+		/// <param name="includePD">Valor Booleano de si deberia incluir los puntos de interest o no</param>
+		/// <returns>Un json con la ciudad y los puntos de interes si tiene y se le especifica que tenga</returns>
+		/// <response code="404">No se encuentra la ciudad</response>
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status404NotFound)]	
+		[HttpGet("{id}")] 
 		public async Task<IActionResult> getValue(int id, bool includePD = false)
 		{
 			var City = await _cityEntities.GetCity(id, includePD);

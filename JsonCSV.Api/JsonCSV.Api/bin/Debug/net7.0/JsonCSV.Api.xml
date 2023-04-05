@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JsonCSV.Api</name>
+    </assembly>
+    <members>
+        <member name="M:JsonCSV.Api.Controllers.CitiesController.getValues(System.Boolean,System.String,System.String,System.Int32,System.Int32)">
+            
+        </member>
+        <member name="M:JsonCSV.Api.Controllers.CitiesController.getValue(System.Int32,System.Boolean)">
+            <summary>
+            Obtener una ciudad basada en el id
+            </summary>
+            <param name="id">ID de la ciudad</param>
+            <param name="includePD">Valor Booleano de si deberia incluir los puntos de interest o no</param>
+            <returns>Un json con la ciudad y los puntos de interes si tiene y se le especifica que tenga</returns>
+            <response code="404">No se encuentra la ciudad</response>
+        </member>
+    </members>
+</doc>
